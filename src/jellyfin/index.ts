@@ -17,11 +17,10 @@ client.authenticate().then(async (success) => {
 
    
     const item = client.getRandomItem(libraries.map((library) => library.items).flat());
-    const proxy = ProxyManager.createProxy(client.getDownloadLink(item!.itemId));
+    const proxy = ProxyManager.createProxy(process.env.JELLYFIN_HOST!, '9df05689185f432aaf2d7b8941b617b7', client.apiKey)
 
-    console.log(`Proxy created: ${proxy.id} | ${proxy.downloadLink}`);
+    console.log(`Proxy created: http://node1.gart.sh:3060/v/${proxy.id}`);
 
 
 
 });
-

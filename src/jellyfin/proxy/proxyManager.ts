@@ -9,8 +9,8 @@ export default class ProxyManager {
         setInterval(ProxyManager.cleanProxies, 1000 * 60 * 60); // 1 hour
     }
     
-    public static createProxy(downloadLink: string) {
-        const proxy = new Proxy(downloadLink);
+    public static createProxy(host: string, itemId: string,  apiKey: string ) {
+        const proxy = new Proxy(host, itemId, apiKey);
         ProxyManager.proxies.set(proxy.id, proxy);
         return proxy;
     }

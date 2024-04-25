@@ -29,6 +29,10 @@ export default class JellyfinClient {
 
     }
 
+    public get apiKey() {
+        return this._api.accessToken
+    }
+
     public async authenticate() {
 
         const auth = await this._api.authenticateUserByName(this.username, this.password);
