@@ -8,7 +8,7 @@ a jellyfin client designed for vrchat
 >
 > While this project is functional, it is not yet complete. It is not recommended to use this project in a production environment.
 
-handles requesting media from jellyfin and transcoding it to a format that can be played in vrchat, as well as proxying urls to bypass the need for a jellyfin api key
+handles requesting media from jellyfin and transcoding it to a format that can be played in vrchat, as well as proxying urls to bypass the risk of sharing a jellyfin api key
 
 ## Installation
 
