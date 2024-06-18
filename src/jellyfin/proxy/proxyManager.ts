@@ -4,13 +4,13 @@ export default class ProxyManager {
 
     public static readonly PROXY_TIMEOUT = 1000 * 60 * 60 * 24; // 24 hours
     public static proxies: Map<string, Proxy> = new Map();
-    
+
     public static init() {
         setInterval(ProxyManager.cleanProxies, 1000 * 60 * 60); // 1 hour
     }
-    
-    public static createProxy(host: string, itemId: string,  apiKey: string ) {
-        const proxy = new Proxy(host, itemId, apiKey);
+
+    public static createProxy(itemId: string) {
+        const proxy = new Proxy(itemId);
         ProxyManager.proxies.set(proxy.id, proxy);
         return proxy;
     }

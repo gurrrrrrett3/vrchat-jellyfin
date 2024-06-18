@@ -1,7 +1,8 @@
 import { Api, Jellyfin, } from "@jellyfin/sdk";
 import { getUserViewsApi } from "@jellyfin/sdk/lib/utils/api/user-views-api"
 import { getItemsApi } from "@jellyfin/sdk/lib/utils/api/items-api"
-import { BaseItemDto } from "@jellyfin/sdk/lib/generated-client/models";
+import { getVideosApi } from "@jellyfin/sdk/lib/utils/api/videos-api"
+import fetch from "node-fetch";
 
 export default class JellyfinClient {
 
@@ -83,6 +84,8 @@ export default class JellyfinClient {
                 return {
                     itemId: item.Id!,
                     name: item.Name || undefined,
+                    playable: item.MediaType == "Video",
+                    episode: item.IndexNumber || undefined,
                 }
             }
 
@@ -98,8 +101,29 @@ export default class JellyfinClient {
 
     }
 
-    public getDownloadLink(itemId: string) {
-        return this._api.basePath + "/Items/" + itemId + "/Download?api_key=" + this._api.accessToken
+    public async getVideoStream(itemId: string) {
+        const url = new URL(`${this.serverUrl}/Videos/${itemId}/stream.mp4`);
+        url.searchParams.set("api_key", this.apiKey);
+        url.searchParams.set("audioCodec", "aac");
+        url.searchParams.set("videoCodec", "h264");
+        // url.searchParams.set("audioBitrate", "128000");
+        // url.searchParams.set("videoBitrate", "1000000");
+        url.searchParams.set("maxAudioChannels", "2");
+        url.searchParams.set("subtitleStreamIndex", "0")
+        url.searchParams.set("audioStreamIndex", "2")
+        url.searchParams.set("subtitleMethod", "Embed")
+
+        console.log(`Requesting video stream from ${url.toString()}`);
+
+
+        const response = await fetch(url.toString(), {
+            headers: {
+                "User-Agent": JellyfinClient.APP_NAME
+            }
+        })
+
+
+        return response.body
     }
 
     public getRandomItem(items: NestedItem[]): NestedItem | undefined {

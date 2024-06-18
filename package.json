@@ -27,6 +27,7 @@
     "@types/fluent-ffmpeg": "^2.1.24",
     "@types/http-proxy": "^1.17.14",
     "@types/node-fetch": "^2.6.9",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^5.3.1"
   }
 }
