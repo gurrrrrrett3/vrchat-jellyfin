@@ -23,7 +23,7 @@ npm run build
 
 rename the `.env.example` file to `.env` and fill in the required fields.  
 
-it's reccommended to use a process manager like pm2 to keep it running
+it's reccommended to use a process manager like pm2 to keep it running:
 
 ```bash
 pm2 start dist/index.js --name vrc-jellyfin
