@@ -21,7 +21,8 @@ npm run build
 
 ## Usage
 
-rename the `.env.example` file to `.env` and fill in the required fields
+rename the `.env.example` file to `.env` and fill in the required fields.  
+
 it's reccommended to use a process manager like pm2 to keep it running
 
 ```bash
