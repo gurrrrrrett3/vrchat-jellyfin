@@ -22,10 +22,13 @@ npm run build
 ## Usage
 
 rename the `.env.example` file to `.env` and fill in the required fields
+it's reccommended to use a process manager like pm2 to keep it running
 
 ```bash
-npm run start
+pm2 start dist/index.js --name vrc-jellyfin
+pm2 save
 ```
+make sure to do `pm2 startup` if you haven't already so it autostarts
 
 go to the web interface, select media, and copy the link. paste the link into the vrchat client to play the media
 
