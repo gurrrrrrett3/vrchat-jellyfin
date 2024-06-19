@@ -57,9 +57,9 @@ export default class JellyfinClient {
             const itemsResponse = await this.getSubItemsRecursive(view.Id!);
 
             return {
-                viewId: view.Id,
-                viewName: view.Name,
-                items: itemsResponse
+                itemId: view.Id,
+                name: view.Name,
+                subItems: itemsResponse
             }
 
         }))

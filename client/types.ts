@@ -1,9 +1,3 @@
-export interface View {
-    viewId: string;
-    viewName: string;
-    items: SubFolder[];
-}
-
 export type Nested = SubFolder | SubItem
 
 export interface SubFolder {

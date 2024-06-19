@@ -1,7 +1,7 @@
-import { View, SubFolder, Nested, SubItem } from "./types";
+import { Nested, SubFolder, SubItem } from "./types";
 
 export class Ui {
-    public static renderItems(views: View[]) {
+    public static renderItems(views: SubFolder[]) {
 
         const container = document.getElementById("container")!;
 
@@ -14,12 +14,12 @@ export class Ui {
             titleContainer.classList.add("title-container");
 
             const title = document.createElement("h1");
-            title.textContent = item.viewName;
+            title.textContent = item.name;
 
             titleContainer.appendChild(title);
             view.appendChild(titleContainer);
 
-            item.items.forEach(subItem => {
+            item.subItems.forEach(subItem => {
                 Ui.renderSubItem(subItem, view);
             });
 
@@ -27,7 +27,7 @@ export class Ui {
                 view.classList.toggle("open");
                 view.childNodes.forEach(node => {
                     if (node instanceof HTMLElement) {
-                        if (node.classList.contains("subfolder")) {
+                        if (node.classList.contains("subfolder") || node.classList.contains("subitem")) {
                             node.hidden = !view.classList.contains("open");
                         }
                     }
@@ -35,8 +35,6 @@ export class Ui {
             })
 
             container.appendChild(view);
-
-
         });
 
     }
