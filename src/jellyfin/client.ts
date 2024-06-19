@@ -22,7 +22,7 @@ export default class JellyfinClient {
             },
             deviceInfo: {
                 name: `${JellyfinClient.APP_NAME} ${process.env.npm_package_version || "0.0.0"} | ${process.platform} | ${process.arch}`,
-                id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                id: "jellyfin-vrchat",
             }
         });
 
@@ -36,7 +36,11 @@ export default class JellyfinClient {
 
     public async authenticate() {
 
-        const auth = await this._api.authenticateUserByName(this.username, this.password);
+        const auth = await this._api.authenticateUserByName(this.username, this.password).catch((e) => {
+            console.error("Failed to authenticate with Jellyfin, check your username and password", e);
+            process.exit(1);
+        });
+
         this.userId = auth.data.User?.Id;
         return auth.status == 200
 

@@ -6,7 +6,7 @@ a jellyfin client designed for vrchat
 >
 > ### Incomplete Project
 >
-> While this project is functional, it is not yet complete. It is not recommended to use this project in a production environment.
+> While this project is functional, it is not yet complete. The end goal is to have a link that can be pasted into the vrchat client, then use the jellyfin cast feature to control the player like a chromecast. This is not yet implemented, and the current implementation is a workaround.
 
 handles requesting media from jellyfin and transcoding it to a format that can be played in vrchat, as well as proxying urls to bypass the risk of sharing a jellyfin api key
 
@@ -38,6 +38,9 @@ go to the web interface, select media, and copy the link. paste the link into th
 - [x] Jellyfin proxy 
 - [x] Transcoding
 - [ ] Subtitle Baking
-- [x] Web interface
+- [ ] Subtitle/audio track selection
+- [x] Temp Web interface
 - [ ] Support for the jellyfin cast api
+- [ ] Video Stream generation (splash screen with instructions, etc)
+- [ ] Docker
 
