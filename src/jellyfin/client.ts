@@ -114,7 +114,7 @@ export default class JellyfinClient {
         // url.searchParams.set("videoBitrate", "1000000");
         url.searchParams.set("maxAudioChannels", "2");
         url.searchParams.set("subtitleStreamIndex", "0")
-        url.searchParams.set("audioStreamIndex", "2")
+        url.searchParams.set("audioStreamIndex", "0")
         url.searchParams.set("subtitleMethod", "Embed")
 
         console.log(`Requesting video stream from ${url.toString()}`);
