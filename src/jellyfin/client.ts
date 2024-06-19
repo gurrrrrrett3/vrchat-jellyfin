@@ -1,8 +1,10 @@
 import { Api, Jellyfin, } from "@jellyfin/sdk";
 import { getUserViewsApi } from "@jellyfin/sdk/lib/utils/api/user-views-api"
 import { getItemsApi } from "@jellyfin/sdk/lib/utils/api/items-api"
-import { getVideosApi } from "@jellyfin/sdk/lib/utils/api/videos-api"
 import fetch from "node-fetch";
+import { resolve } from "path";
+
+const encodingSettings: Record<string, string> = require(resolve("./encodingSettings.js")).encodingSettings
 
 export default class JellyfinClient {
 
@@ -108,16 +110,16 @@ export default class JellyfinClient {
     }
 
     public async getVideoStream(itemId: string) {
-        const url = new URL(`${this.serverUrl}/Videos/${itemId}/stream.mp4`);
+        const url = new URL(`${this.serverUrl}/Videos/${itemId}/stream`);
         url.searchParams.set("api_key", this.apiKey);
+        url.searchParams.set("container", "mp4")
         url.searchParams.set("audioCodec", "aac");
         url.searchParams.set("videoCodec", "h264");
-        // url.searchParams.set("audioBitrate", "128000");
-        // url.searchParams.set("videoBitrate", "1000000");
-        url.searchParams.set("maxAudioChannels", "2");
-        url.searchParams.set("subtitleStreamIndex", "0")
-        url.searchParams.set("audioStreamIndex", "0")
         url.searchParams.set("subtitleMethod", "Embed")
+
+        for (const [k, v] of Object.entries(encodingSettings)) {
+            url.searchParams.set(k, v)
+        }
 
         console.log(`Requesting video stream from ${url.toString()}`);
 
