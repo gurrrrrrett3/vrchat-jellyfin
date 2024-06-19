@@ -62,7 +62,9 @@ export default class JellyfinClient {
                 subItems: itemsResponse
             }
 
-        }))
+        })).catch((e) => {
+            console.error("Failed to get playable media", e);
+        });
         return items
     }
 

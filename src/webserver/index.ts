@@ -30,6 +30,11 @@ app.get("/v/:id", async (req, res) => {
 
     const itemId = ProxyManager.getProxy(req.params.id)?.itemId;
 
+    if (!itemId) {
+        res.status(404).send("Proxy not found, is your url valid?");
+        return;
+    }
+
     const stream = await client.getVideoStream(itemId!);
     stream.pipe(res);
 
