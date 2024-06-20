@@ -1,5 +1,7 @@
 # vrchat-jellyfin
 
+[![Docker](https://github.com/gurrrrrrett3/vrchat-jellyfin/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/gurrrrrrett3/vrchat-jellyfin/actions/workflows/docker-publish.yml)
+
 a jellyfin client designed for vrchat
 
 > [!IMPORTANT]
@@ -35,16 +37,28 @@ go to the web interface, select media, and copy the link. paste the link into th
 
 ## Docker
 
-Navigate to the docker folder and use the 3 files there.
-
-### Building
-Use elevated permissions if it fails to build or run
-
-```bash
-docker build . -t vrchat-jellyfin
-```
+A docker image is provided for easy deployment
 
 ### Running
+
+docker compose (recommended):
+
+```yaml
+services:
+  vrchat-jellyfin:
+    image: ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
+    container_name: vrchat-jellyfin
+    restart: unless-stopped
+    ports:
+      - 4000:4000
+    environment:
+      JELLYFIN_HOST: <http[s]://URL>
+      JELLYFIN_USERNAME: <USERNAME>
+      JELLYFIN_PASSWORD: <PASSWORD>
+      WEBSERVER_PORT: 4000
+```
+
+docker cli:
 
 ```bash
 docker run -d \
@@ -55,7 +69,7 @@ docker run -d \
 -e JELLYFIN_USERNAME=<USERNAME> \
 -e JELLYFIN_PASSWORD=<PASSWORD> \
 -e WEBSERVER_PORT=4000 \
-vrchat-jellyfin:latest
+ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
 ```
 
 ## Progress
