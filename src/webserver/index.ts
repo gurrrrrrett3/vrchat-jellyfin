@@ -42,7 +42,7 @@ app.get("/v/:id", async (req, res) => {
 });
 
 const server = http.createServer(app);
-const port = parseInt(process.env.WEBSERVER_PORT as string) || 3060;
+const port = parseInt(process.env.WEBSERVER_PORT || "4000");
 
 server.listen(port, () => {
     console.log(`Webserver listening on port ${port}`);

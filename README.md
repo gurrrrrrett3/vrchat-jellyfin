@@ -55,7 +55,6 @@ services:
       JELLYFIN_HOST: <http[s]://URL>
       JELLYFIN_USERNAME: <USERNAME>
       JELLYFIN_PASSWORD: <PASSWORD>
-      WEBSERVER_PORT: 4000
 ```
 
 docker cli:
@@ -68,7 +67,6 @@ docker run -d \
 -e JELLYFIN_HOST=<http[s]://URL> \
 -e JELLYFIN_USERNAME=<USERNAME> \
 -e JELLYFIN_PASSWORD=<PASSWORD> \
--e WEBSERVER_PORT=4000 \
 ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
 ```
 
