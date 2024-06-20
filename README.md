@@ -33,6 +33,31 @@ make sure to do `pm2 startup` if you haven't already so it autostarts
 
 go to the web interface, select media, and copy the link. paste the link into the vrchat client to play the media
 
+## Docker
+
+Navigate to the docker folder and use the 3 files there.
+
+### Building
+Use elevated permissions if it fails to build or run
+
+```bash
+docker build . -t vrchat-jellyfin
+```
+
+### Running
+
+```bash
+docker run -d \
+--name vrchat-jellyfin \
+--restart unless-stopped \
+-p 4000:4000 \
+-e JELLYFIN_HOST=<http[s]://URL> \
+-e JELLYFIN_USERNAME=<USERNAME> \
+-e JELLYFIN_PASSWORD=<PASSWORD> \
+-e WEBSERVER_PORT=4000 \
+vrchat-jellyfin:latest
+```
+
 ## Progress
 
 - [x] Jellyfin proxy 
@@ -42,5 +67,4 @@ go to the web interface, select media, and copy the link. paste the link into th
 - [x] Temp Web interface
 - [ ] Support for the jellyfin cast api
 - [ ] Video Stream generation (splash screen with instructions, etc)
-- [ ] Docker
-
+- [x] Docker
