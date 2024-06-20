@@ -47,9 +47,6 @@ export class Ui {
             container.classList.add("subfolder");
             container.hidden = true;
 
-            container.setAttribute("data-item-id", items.itemId);
-            container.setAttribute("data-item-name", items.name);
-
             const titleContainer = document.createElement("div");
             titleContainer.classList.add("title-container");
 
@@ -90,14 +87,9 @@ export class Ui {
             titleContainer.appendChild(title);
             item.appendChild(titleContainer);
 
-            item.setAttribute("data-item-id", subItem.itemId);
-            item.setAttribute("data-item-name", subItem.name);
-
             titleContainer.addEventListener("click", async () => {
 
                 if (title.hasAttribute("data-url")) {
-                    const url = title.getAttribute("data-url");
-
                     return
                 }
 
