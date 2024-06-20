@@ -80,3 +80,4 @@ ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
 - [ ] Support for the jellyfin cast api
 - [ ] Video Stream generation (splash screen with instructions, etc)
 - [x] Docker
+- [ ] Seeking (not sure if this is possible)
