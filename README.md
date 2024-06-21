@@ -35,6 +35,11 @@ make sure to do `pm2 startup` if you haven't already so it autostarts
 
 go to the web interface, select media, and copy the link. paste the link into the vrchat client to play the media
 
+## Tips
+- If the player has a switch between **Video** and **Stream**, use **Stream**
+- I've personally had better luck with the Unity video player over the AVPro one, but both should work
+- If you change the video encoding settings, 720p (the default) works best for most devices. I wouldn't go above 1080p unless you have a smaller group or high upload bandwitdh.
+
 ## Docker
 
 A docker image is provided for easy deployment
