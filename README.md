@@ -12,29 +12,6 @@ a jellyfin client designed for vrchat
 
 handles requesting media from jellyfin in a format that can be played in vrchat, as well as proxying urls to bypass the risk of sharing a jellyfin api key
 
-## Installation
-
-install nodejs and npm
-
-```bash
-npm install
-npm run build
-```
-
-## Usage
-
-rename the `.env.example` file to `.env` and fill in the required fields.  
-
-it's reccommended to use a process manager like pm2 to keep it running:
-
-```bash
-pm2 start dist/index.js --name vrc-jellyfin
-pm2 save
-```
-make sure to do `pm2 startup` if you haven't already so it autostarts
-
-go to the web interface, select media, and copy the link. paste the link into the vrchat client to play the media
-
 ## Tips
 - If the player has a switch between **Video** and **Stream**, use **Stream**
 - I've personally had better luck with the Unity video player over the AVPro one, but both should work
@@ -42,11 +19,11 @@ go to the web interface, select media, and copy the link. paste the link into th
 
 ## Docker
 
-A docker image is provided for easy deployment
+A docker image is provided for easy deployment:
 
 ### Running
 
-docker compose (recommended):
+Docker Compose (recommended):
 
 ```yaml
 services:
@@ -62,7 +39,7 @@ services:
       JELLYFIN_PASSWORD: <PASSWORD>
 ```
 
-docker cli:
+Docker cli:
 
 ```bash
 docker run -d \
@@ -74,6 +51,29 @@ docker run -d \
 -e JELLYFIN_PASSWORD=<PASSWORD> \
 ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
 ```
+
+## Installation (No Docker)
+
+Install Node.js and npm
+
+```bash
+npm install
+npm run build
+```
+
+Rename the `.env.example` file to `.env` and fill in the required fields.  
+
+It's reccommended to use a process manager like pm2 to keep it running:
+
+```bash
+pm2 start dist/index.js --name vrc-jellyfin
+pm2 save
+```
+Make sure to do `pm2 startup` if you haven't already so it autostarts
+
+## Usage
+
+Go to the web interface (default port is 4000), select media, and copy the link. Paste the link into the vrchat client to play the media.
 
 ## Progress
 
