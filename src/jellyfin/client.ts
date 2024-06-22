@@ -112,10 +112,11 @@ export default class JellyfinClient {
     public async getVideoStream(itemId: string) {
         const url = new URL(`${this.serverUrl}/Videos/${itemId}/stream`);
         url.searchParams.set("api_key", this.apiKey);
+
+        // these are the default encoding settings, can be overridden by the user
         url.searchParams.set("container", "mp4")
         url.searchParams.set("audioCodec", "aac");
         url.searchParams.set("videoCodec", "h264");
-        url.searchParams.set("subtitleMethod", "Embed")
 
         for (const [k, v] of Object.entries(encodingSettings)) {
             url.searchParams.set(k, v)
