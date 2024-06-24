@@ -17,6 +17,13 @@ handles requesting media from jellyfin in a format that can be played in vrchat,
 - I've personally had better luck with the Unity video player over the AVPro one, but both should work
 - If you change the video encoding settings, 720p (the default) works best for most devices. I wouldn't go above 1080p unless you have a smaller group or high upload bandwitdh.
 
+## Supported Platforms
+
+-[x] VRChat
+-[x] Chillout VR
+-[ ] Resonite (crashes)
+*These are just platforms that have been tested, feel free to PR with other platforms if you've tested on them*
+
 ## Docker
 
 A docker image is provided for easy deployment:
