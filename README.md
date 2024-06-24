@@ -2,7 +2,7 @@
 
 [![Docker](https://github.com/gurrrrrrett3/vrchat-jellyfin/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/gurrrrrrett3/vrchat-jellyfin/actions/workflows/docker-publish.yml)
 
-a jellyfin client designed for vrchat
+a Jellyfin client designed for VRChat
 
 > [!IMPORTANT]
 >
