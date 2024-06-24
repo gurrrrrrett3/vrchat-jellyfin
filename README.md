@@ -47,7 +47,7 @@ services:
       JELLYFIN_PASSWORD: <PASSWORD>
 ```
 
-Docker cli:
+Docker CLI:
 
 ```bash
 docker run -d \
