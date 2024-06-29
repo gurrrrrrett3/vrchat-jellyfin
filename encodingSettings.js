@@ -6,9 +6,9 @@ const encodingSettings = {
   maxWidth: process.env.MAX_WIDTH || "1280",
 
   // caution changing these values
-  container: process.env.CONTAINER || "mp4", // Default container format
-  videoCodec: process.env.VIDEO_CODEC || "h264", // Default video codec
-  audioCodec: process.env.AUDIO_CODEC || "aac", // Default audio codec
+  container: "mp4", // Default container format
+  videoCodec: "h264", // Default video codec
+  audioCodec: "aac", // Default audio codec
 };
 
 module.exports.encodingSettings = encodingSettings;
