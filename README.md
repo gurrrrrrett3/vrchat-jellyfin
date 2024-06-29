@@ -34,6 +34,7 @@ A docker image is provided for easy deployment:
 Docker Compose (recommended):
 
 ```yaml
+version: '3'
 services:
   vrchat-jellyfin:
     image: ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
@@ -45,6 +46,11 @@ services:
       JELLYFIN_HOST: <http[s]://URL>
       JELLYFIN_USERNAME: <USERNAME>
       JELLYFIN_PASSWORD: <PASSWORD>
+      AUDIO_BITRATE: 128000
+      VIDEO_BITRATE: 3000000
+      MAX_AUDIO_CHANNELS: 2
+      MAX_HEIGHT: 720
+      MAX_WIDTH: 1280
 ```
 
 Docker CLI:
@@ -57,6 +63,10 @@ docker run -d \
 -e JELLYFIN_HOST=<http[s]://URL> \
 -e JELLYFIN_USERNAME=<USERNAME> \
 -e JELLYFIN_PASSWORD=<PASSWORD> \
+-e AUDIO_BITRATE: 128000 \
+-e VIDEO_BITRATE: 3000000 \
+-e MAX_HEIGHT: 720 \
+-e MAX_WIDTH: 1280 \
 ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
 ```
 
