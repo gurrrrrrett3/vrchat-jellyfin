@@ -16,7 +16,9 @@ export default class JellyfinClient {
     public userId?: string;
 
     constructor(public serverUrl: string, private username: string, private password: string) {
-
+        // Ensure the serverUrl does not end with a slash
+        this.serverUrl = serverUrl.replace(/\/+$/, "");
+    
         this._sdk = new Jellyfin({
             clientInfo: {
                 name: JellyfinClient.APP_NAME,
@@ -27,9 +29,8 @@ export default class JellyfinClient {
                 id: "jellyfin-vrchat",
             }
         });
-
-        this._api = this._sdk.createApi(serverUrl);
-
+    
+        this._api = this._sdk.createApi(this.serverUrl);
     }
 
     public get apiKey() {
