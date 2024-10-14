@@ -1,4 +1,7 @@
+// src/jellyfin/proxy/proxyManager.ts
+
 import Proxy from "./proxy";
+import { ProxyOptions } from "./proxy";
 
 export default class ProxyManager {
 
@@ -9,8 +12,9 @@ export default class ProxyManager {
         setInterval(ProxyManager.cleanProxies, 1000 * 60 * 60); // 1 hour
     }
 
-    public static createProxy(itemId: string) {
-        const proxy = new Proxy(itemId);
+    // Modified createProxy method to accept options
+    public static createProxy(itemId: string, options?: ProxyOptions) {
+        const proxy = new Proxy(itemId, options);
         ProxyManager.proxies.set(proxy.id, proxy);
         return proxy;
     }
@@ -33,9 +37,7 @@ export default class ProxyManager {
             if (now.getTime() - proxy.createdAt.getTime() > ProxyManager.PROXY_TIMEOUT) {
                 ProxyManager.deleteProxy(proxy.id);
             }
-        })
+        });
     }
-
-
 
 }
