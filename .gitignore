@@ -1,3 +1,7 @@
 node_modules
 dist
 .env
+vrchat-jellyfin.code-workspace
+project_structure.txt
+generateProjectStructure.js
+.gitignore

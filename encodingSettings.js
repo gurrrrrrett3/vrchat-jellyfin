@@ -9,6 +9,9 @@ const encodingSettings = {
   container: "mp4", // Default container format
   videoCodec: "h264", // Default video codec
   audioCodec: "aac", // Default audio codec
+  // Subtitle defaults
+  SubtitleMethod: "Encode",
+  SubtitleCodec: "srt"
 };
 
 module.exports.encodingSettings = encodingSettings;
