@@ -98,7 +98,8 @@ Go to the web interface (default port is 4000), select media, and copy the link.
 - [x] Jellyfin proxy 
 - [x] Transcoding
 - [ ] Subtitle Baking
-- [ ] Subtitle/audio track selection
+- [ ] Audio track selection
+- [x] Subtitle track selection
 - [x] Temp Web interface
 - [ ] Support for the jellyfin cast api
 - [ ] Video Stream generation (splash screen with instructions, etc)
