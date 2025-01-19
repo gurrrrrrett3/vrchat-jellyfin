@@ -31,7 +31,7 @@ app.post("/i/:id", async (req, res) => {
 
     const proxyOptions: ProxyOptions = {};
 
-    if (subtitleStreamIndex !== undefined) {
+    if (subtitleStreamIndex != null) {
         proxyOptions.subtitleStreamIndex = subtitleStreamIndex;
         proxyOptions.subtitleMethod = SubtitleMethod.Encode;
     }
