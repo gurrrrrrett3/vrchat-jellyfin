@@ -21,7 +21,7 @@ handles requesting media from jellyfin in a format that can be played in vrchat,
 
 - [x] VRChat
 - [x] Chillout VR
-- [ ] Resonite (crashes)
+- [x] Resonite
 
 *These are just platforms that have been tested, feel free to PR with other platforms if you've tested on them*
 
