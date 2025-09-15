@@ -66,10 +66,30 @@ app.get("/v/:id", async (req, res) => {
     const itemId = proxy.itemId;
     const options = proxy.options;
 
-    const stream = await client.getVideoStream(itemId!, options);
-    stream.pipe(res);
-
-    console.log(`Piping stream to client with options:`, options);
+    try {
+        const response = await client.getVideoStream(itemId!, options);
+        if (!response.ok || !response.body) {
+            const errorText = await response.text();
+            console.error(`Jellyfin stream fetch failed:`, {
+                status: response.status,
+                statusText: response.statusText,
+                headers: Object.fromEntries(response.headers.entries()),
+                bodySnippet: errorText.slice(0, 200)
+            });
+            res.status(502).send("Failed to fetch video stream from Jellyfin.");
+            return;
+        }
+        // Set headers from Jellyfin response
+        for (const [key, value] of response.headers.entries()) {
+            if (key.toLowerCase() === 'transfer-encoding') continue; // skip problematic headers
+            res.setHeader(key, value);
+        }
+        response.body.pipe(res);
+        console.log(`Piping stream to client with options:`, options);
+    } catch (err) {
+        console.error('Error in /v/:id route:', err);
+        res.status(500).send('Internal server error while proxying video stream.');
+    }
 });
 
 // Start the server after Jellyfin client authentication
