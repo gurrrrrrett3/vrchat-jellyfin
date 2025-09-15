@@ -25,3 +25,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    labels:
+      # Note: For Traefik deployments, add these labels to protect the interface but not video streams:
+      # - "traefik.http.routers.vrchat-jellyfin.rule=Host(`your-domain.com`) && !PathPrefix(`/v/`)"
+      # - "traefik.http.routers.vrchat-jellyfin.middlewares=auth@file,secureHeaders@file"
+      # - "traefik.http.routers.vrchat-jellyfin-video.rule=Host(`your-domain.com`) && PathPrefix(`/v/`)"
+      # - "traefik.http.routers.vrchat-jellyfin-video.middlewares=secureHeaders@file"
