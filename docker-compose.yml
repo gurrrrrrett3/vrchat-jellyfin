@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  vrchat-jellyfin:
+    image: ghcr.io/gurrrrrrett3/vrchat-jellyfin:master
+    container_name: vrchat-jellyfin
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      # Required Jellyfin connection settings
+      - JELLYFIN_HOST=${JELLYFIN_HOST:?}
+      - JELLYFIN_USERNAME=${JELLYFIN_USERNAME:?}
+      - JELLYFIN_PASSWORD=${JELLYFIN_PASSWORD:?}
+      
+      # Optional audio/video quality settings with defaults
+      - AUDIO_BITRATE=${AUDIO_BITRATE:-192000}
+      - VIDEO_BITRATE=${VIDEO_BITRATE:-5000000}
+      - MAX_AUDIO_CHANNELS=${MAX_AUDIO_CHANNELS:-2}
+      - MAX_HEIGHT=${MAX_HEIGHT:-1080}
+      - MAX_WIDTH=${MAX_WIDTH:-1920}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

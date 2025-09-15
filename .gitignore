@@ -5,3 +5,4 @@ vrchat-jellyfin.code-workspace
 project_structure.txt
 generateProjectStructure.js
 .gitignore
+.cursor/*
