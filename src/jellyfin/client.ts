@@ -138,7 +138,7 @@ export default class JellyfinClient {
             },
         });
 
-        return response.body;
+        return response;
     }
 
     // New method to fetch available subtitle streams
